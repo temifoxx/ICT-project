@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { characters } from "./MarvelData";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="mainBody" style={{backgroundImage: `url("https://i.pinimg.com/originals/93/01/06/9301063a615bfaea6e521645be21d0e5.png")`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+      <div className="topHeader">
+        <h1 className="header">........悪役........</h1>
+        <h1 className="header">Akuyaku</h1>
+        <input placeholder="Search an AKUYAKU" className="topInput" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="cardBody">
+        {characters.map((data, index) => (
+          <div key={index} className="card">
+            <div className="main">
+              <img className="avatarImage" src={data.img1} alt={data.alias} />
+              <h2>{data.alias}</h2>
+              <p className="description">
+                {data?.abilities[0]}
+                <br />
+                {data?.abilities[1]}
+                <br />
+                {data?.abilities[2]}
+              </p>
+              <div className="avatarInfo">
+                <div className="price">
+                  <ins>◘</ins>
+                  <p>{data.team}</p>
+                </div>
+                <div className="duration">
+                  <ins>◷</ins>
+                  <p>Full Name: {data.homeworld}</p>
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+        ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
