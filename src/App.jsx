@@ -10,7 +10,8 @@ function App() {
         <input placeholder="Search an AKUYAKU" className="topInput" />
       </div>
       <div className="cardBody">
-        {characters.map((data, index) => (
+        {characters
+        .map((data, index) => (
           <div key={index} className="card">
             <div className="main">
               <img className="avatarImage" src={data.img1} alt={data.alias} />
